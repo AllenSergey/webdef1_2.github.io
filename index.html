@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточка товара</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+</head>
+<body>   
+    <div class="product-card">
+        <div class="main-image-container">
+            <img class="main-image" src="1.jpg" alt="Основное изображение">
+        </div>
+        <div class="slider-thumbnails-container">
+            <div class="arrow up">ˆ</div>
+            <div class="thumbnails">
+                <img class="thumbnail active" src="1.jpg" alt="Миниатюра 1">
+                <img class="thumbnail" src="2.jpg" alt="Миниатюра 2">
+                <img class="thumbnail" src="3.jpeg" alt="Миниатюра 3">
+            </div>
+            <div class="arrow down">ˬ</div>
+        </div>
+        <div class="product-info">
+            <div class="title">SPC ЛАМИНАТ ROYCE ENJOY ДУБ БЛЭКРОК E308</div>
+            <div class="article">Артикул E308</div>
+            <div class="rating">★★★★☆</div>
+            <div class="description">
+                Вы хотите сделать свой интерьер более привлекательным и удобным для жизни? SPC квадратный Royce Enjoy Dub Blekrok E308 - это лучшее решение для создания красивых и практичных полов в вашем доме или офисе. Этот квадратный/половой ламинат сочетает в себе высокое качество и изысканный дизайн, который будет украшением любой комнаты.
+            </div>
+            <div class="total1">
+            <div class="total">
+            <div class="price-block">
+                <div class="price">1200 ₽/ м²</div>
+                <div class="old-price">1250 ₽ / м²</div>
+                <div class="unit-selector">
+                    <button class="unit-button active" data-unit="m2">м²</button>
+                    <button class="unit-button" data-unit="up">уп</button>
+                </div>
+            </div>
+            <div class="quantity-block">
+                <button class="quantity-minus square">-</button>
+                <input type="text" class="quantity-input square" value="2.16" readonly>
+                <button class="quantity-plus square">+</button>
+                <span>=</span>
+                <button class="quantity-minus pack">-</button>
+                <input type="text" class="quantity-input pack" value="1" readonly>
+                <button class="quantity-plus pack">+</button>
+                <span class="unit pack">уп</span>
+            </div>              
+        </div>
+            <div class="total-price-block">
+                <div class="total-price"><span class="total">2592 ₽</span></div>
+                <div class="discount-block">
+                    <span class="old-price">2700 ₽</span>
+                    <div class="discount-badge">-4%</div>
+                </div>
+            </div>
+                            
+        </div>              
+            <div class="actions">
+                <button class="add-to-cart">Добавить в корзину</button>
+                <button class="buy-now">Купить в один клик</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
