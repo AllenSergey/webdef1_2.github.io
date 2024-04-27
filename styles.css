@@ -12,7 +12,7 @@ body, html {
 
 .product-card {
     display: flex;
-    max-width: 60%;
+    max-width: 1350px;
     margin: 50px auto;
 }
 
@@ -24,7 +24,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
     max-width: 350px;
     max-height: 459px;
     border-radius: 10px;
@@ -284,7 +284,37 @@ body, html {
 
 
 /* ПРОСТИ ГОСПОДИ НО ЭТО ЧТО ТО ПОХОЖЕЕ НА АДАПТИВ */
-
+@media (max-width: 1199px) {
+    .product-card {
+        padding: 0 15px;
+    }
+    .product-info {
+        margin-left: 43px;
+    }
+}
+@media (max-width: 992px) {
+    .product-card {
+        flex-direction: column;
+    }
+    .slider-photo {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .product-info {
+        margin-left: 0;
+    }
+    .total1 {
+        flex-direction: column;
+    }
+    .total-price-block {
+        margin-left: 0;
+        align-items: flex-start;
+    }
+    .main-image {
+        max-width: 350px;
+        max-height: 459px;
+    }
+}
 
 
   
