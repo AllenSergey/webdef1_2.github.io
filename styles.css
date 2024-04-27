@@ -6,6 +6,8 @@ body, html {
     color: #333;
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    line-height: 130%;
 }
 
 .product-card {
@@ -14,19 +16,24 @@ body, html {
     margin: 50px auto;
 }
 
-.main-image-container {
+.slider-photo {
+    display: flex;
+}
 
+.main-image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden; 
+    max-width: 350px;
+    max-height: 459px;
+    border-radius: 10px;
 }
 
 .main-image {
-    max-width: 590px; 
-    max-height: 780px; 
-    object-fit: contain;
     border-radius: 2%;
+    width: auto;
+    object-fit: contain;
 }
 
 
@@ -278,77 +285,6 @@ body, html {
 
 /* ПРОСТИ ГОСПОДИ НО ЭТО ЧТО ТО ПОХОЖЕЕ НА АДАПТИВ */
 
-@media (max-width: 1200px) {
-    .product-card {
-      flex-direction: column;
-      max-width: 90%;
-    }
-  
-    .main-image-container,
-    .slider-thumbnails-container,
-    .product-info {
-      width: 100%;
-    }
-  
-    .main-image {
-      max-width: 100%;
-    }
-  
-    .price-and-total-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .actions {
-      flex-direction: column;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .main-image {
-      max-width: 100%;
-    }
-  
-    .actions button {
-      width: 100%;
-      margin: 10px 0;
-    }
-  
-    .quantity-block, .total-price-block {
-      width: 100%;
-    }
-  
-    .quantity-block {
-      justify-content: space-between;
-    }
-  
-    .discount-block {
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .title,
-    .article,
-    .rating,
-    .description {
-      text-align: center;
-    }
-  
-    .quantity-block {
-      margin-top: 5%;
-    }
-  
-    .actions {
-      flex-direction: column;
-    }
-  
-    .actions button {
-      width: calc(100% - 10px); 
-    }
-  }
 
 
   
