@@ -4,20 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const upArrow = document.querySelector('.up');
     const downArrow = document.querySelector('.down');
     const unitButtons = document.querySelectorAll('.unit-button');
-    const priceElement = document.querySelector('.price'); // Элемент для цены за единицу
+    const priceElement = document.querySelector('.price');
     const quantityInputSquare = document.querySelector('.quantity-input.square');
     const quantityInputPack = document.querySelector('.quantity-input.pack');
-    const totalPriceElement = document.querySelector('.total-price'); // Элемент для отображения общей стоимости
-    const oldPriceElement = document.querySelector('.old-price'); // Элемент для отображения старой цены до скидки
-    const discountBadge = document.querySelector('.discount-badge'); // Элемент для отображения скидки
+    const totalPriceElement = document.querySelector('.total-price'); 
+    const oldPriceElement = document.querySelector('.old-price'); 
+    const discountBadge = document.querySelector('.discount-badge'); 
     let activeThumbnailIndex = 0;
-    let squarePerPack = 2.16; // Количество м² в одной упаковке
-    let pricePerSquareMeter = 1200; // Цена за м²
-    let pricePerPack = 2700; // Цена за упаковку
-    let unit = 'm2'; // Текущая выбранная единица измерения
-    let discount = 0.04; // Скидка 4%
+    let squarePerPack = 2.16;
+    let pricePerSquareMeter = 1200; 
+    let pricePerPack = 2700; 
+    let unit = 'm2'; 
+    let discount = 0.04;
 
-    // Обновляем активное изображение
+    // активная пикча
     function setActiveThumbnail(index) {
         thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
         thumbnails[index].classList.add('active');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         activeThumbnailIndex = index;
     }
 
-    // Стрелки переключения изображений
+    // стрелки
     upArrow.addEventListener('click', () => {
         if (activeThumbnailIndex > 0) {
             setActiveThumbnail(activeThumbnailIndex - 1);
@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Обработчик кликов по миниатюрам
+    // клики
     thumbnails.forEach((thumbnail, index) => {
         thumbnail.addEventListener('click', () => setActiveThumbnail(index));
     });
 
-    // Функция для расчета и отображения общей стоимости
+    // вся стоимость расчет
     function calculateTotalPrice() {
         let quantitySquare = parseFloat(quantityInputSquare.value);
         let quantityPack = parseInt(quantityInputPack.value);
@@ -57,16 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
             total = quantityPack * basePrice;
         }
 
-        // Общая стоимость со скидкой
+        // вся стоимость скидка
         let discountedPrice = total * (1 - discount);
         totalPriceElement.textContent = `${discountedPrice.toFixed(2)} ₽`;
 
-        // Общая стоимость без скидки, обновляем элемент внутри блока `discount-block`
+        // вся стоимость без скидки
         const discountBlockOldPriceElement = document.querySelector('.discount-block .old-price');
         discountBlockOldPriceElement.textContent = `${total.toFixed(2)} ₽`;
     }
 
-    // Обработчики для единиц измерения
     unitButtons.forEach(button => {
         button.addEventListener('click', function() {
             unitButtons.forEach(btn => btn.classList.remove('active'));
@@ -77,18 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработчики для изменения количества м² и упаковок
     function updateQuantity(type, operation) {
         let quantitySquare = parseFloat(quantityInputSquare.value);
-        let quantityPack = parseInt(quantityInputPack.value);
-
+        let quantityPack = parseInt(quantityInputPack.value.replace(' уп', ''));
+        
         if (type === 'square') {
             if (operation === 'plus') {
                 quantitySquare += squarePerPack;
             } else if (operation === 'minus' && quantitySquare > squarePerPack) {
                 quantitySquare -= squarePerPack;
             }
-            quantityInputSquare.value = quantitySquare.toFixed(2);
+            quantityInputSquare.value = quantitySquare.toFixed(2) + ' м²';
             quantityPack = Math.ceil(quantitySquare / squarePerPack);
         } else if (type === 'pack') {
             if (operation === 'plus') {
@@ -97,24 +95,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 quantityPack -= 1;
             }
             quantitySquare = quantityPack * squarePerPack;
-            quantityInputSquare.value = quantitySquare.toFixed(2);
+            quantityInputSquare.value = quantitySquare.toFixed(2) + ' м²';
         }
-
-        quantityInputPack.value = quantityPack.toString();
+    
+        quantityInputPack.value = quantityPack + ' уп';
         calculateTotalPrice();
     }
 
-    // Кнопки управления количеством м²
+    unitButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            unitButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            unit = this.dataset.unit;
+    
+            priceElement.textContent = unit === 'm2' ? `${pricePerSquareMeter} ₽/м²` : `${pricePerPack} ₽/уп`;
+    
+            const totalTextElement = document.querySelector('.total-text-2');
+            totalTextElement.textContent = unit === 'm2' ? 'Цена ₽/ м²' : 'Цена ₽/ уп.';
+    
+            calculateTotalPrice();
+        });
+    });
+
     document.querySelector('.quantity-minus.square').addEventListener('click', () => updateQuantity('square', 'minus'));
     document.querySelector('.quantity-plus.square').addEventListener('click', () => updateQuantity('square', 'plus'));
 
-    // Кнопки управления количеством упаковок
     document.querySelector('.quantity-minus.pack').addEventListener('click', () => updateQuantity('pack', 'minus'));
     document.querySelector('.quantity-plus.pack').addEventListener('click', () => updateQuantity('pack', 'plus'));
 
-    // Вызываем функцию calculateTotalPrice при инициализации для установления начальных значений
     calculateTotalPrice();
 
-    // Инициализация при загрузке
-    calculateTotalPrice(); // Инициализация общей цены при загрузке
+    calculateTotalPrice(); 
 });

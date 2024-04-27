@@ -178,7 +178,7 @@ body, html {
 
 .quantity-block span {
     margin-left: 4%;
-    margin-right: 4%;
+    margin-right: 2%;
 }
 
 .actions {
@@ -191,11 +191,11 @@ body, html {
 
 .actions button {
     flex: 1; 
-    padding: 10px 20px; 
+    padding: 16px 20px; 
     cursor: pointer; 
     font-size: 16px; 
     margin: 0 5px;
-    text-align: center; 
+    text-align: center;
 }
 
 .add-to-cart, .buy-now {
@@ -207,7 +207,7 @@ body, html {
     color: #fff;
     transition: background-color 0.3s;
     border: 1px solid #000;
-    border-radius: 20px; 
+    border-radius: 25px; 
 }
 
 .add-to-cart:hover {
@@ -229,16 +229,29 @@ body, html {
 .total-price-block {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    font-size: 24px;
+    line-height: 120%;
+    font-size: 21px;
     font-weight: bold;
+    margin-left: 100px;
+    margin-top: 5px;
+}
 
-    margin-left: 50px;
+.total-text {
+    color: rgba(0, 0, 0, 0.5);;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.total-text-2 {
+    color: rgba(0, 0, 0, 0.5);;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .total-price {
     display: flex;
     align-items: baseline;
+    font-size: 25px;
 }
 
 .total-price .total {
@@ -265,8 +278,8 @@ body, html {
 .discount-badge {
     background: #E0FB52;
     color: rgb(0, 0, 0);
-    padding: 0.5em 1em; 
-    border-radius: 5em;
+    padding: 5px 5px;
+    border-radius: 45px;
     font-size: 0.6em; 
 }
 
