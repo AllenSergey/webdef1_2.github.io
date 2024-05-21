@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const productCard = document.querySelector('.product-card');
     const thumbnails = document.querySelectorAll('.thumbnail');
     const mainImage = document.querySelector('.main-image');
     const upArrow = document.querySelector('.up');
@@ -8,14 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const quantityInputSquare = document.querySelector('.quantity-input.square');
     const quantityInputPack = document.querySelector('.quantity-input.pack');
     const totalPriceElement = document.querySelector('.total-price'); 
-    const oldPriceElement = document.querySelector('.old-price'); 
     const discountBadge = document.querySelector('.discount-badge'); 
+    
     let activeThumbnailIndex = 0;
-    let squarePerPack = 2.16;
-    let pricePerSquareMeter = 1200; 
-    let pricePerPack = 2700; 
-    let unit = 'm2'; 
-    let discount = 0.04;
+    const squarePerPack = parseFloat(productCard.dataset.squarePerPack);
+    const pricePerSquareMeter = parseFloat(productCard.dataset.pricePerSquareMeter);
+    const pricePerPack = parseFloat(productCard.dataset.pricePerPack);
+    const discount = parseFloat(productCard.dataset.discount);
+    let unit = 'm2';
 
     // активная пикча
     function setActiveThumbnail(index) {
@@ -46,24 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // вся стоимость расчет
     function calculateTotalPrice() {
         let quantitySquare = parseFloat(quantityInputSquare.value);
-        let quantityPack = parseInt(quantityInputPack.value);
-        let total = 0;
-        let basePrice = 0;
-        if (unit === 'm2') {
-            basePrice = pricePerSquareMeter;
-            total = quantitySquare * basePrice;
-        } else {
-            basePrice = pricePerPack;
-            total = quantityPack * basePrice;
-        }
-
-        // вся стоимость скидка
+        let total = quantitySquare * pricePerSquareMeter;
         let discountedPrice = total * (1 - discount);
-        totalPriceElement.textContent = `${discountedPrice.toFixed(2)} ₽`;
+        totalPriceElement.textContent = `${Math.round(discountedPrice)} ₽`;
 
         // вся стоимость без скидки
         const discountBlockOldPriceElement = document.querySelector('.discount-block .old-price');
-        discountBlockOldPriceElement.textContent = `${total.toFixed(2)} ₽`;
+        discountBlockOldPriceElement.textContent = `${Math.round(total)} ₽`;
     }
 
     unitButtons.forEach(button => {
@@ -71,8 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
             unitButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             unit = this.dataset.unit;
-            priceElement.textContent = unit === 'm2' ? `${pricePerSquareMeter} ₽/м²` : `${pricePerPack} ₽/уп`;
-            calculateTotalPrice();
+            priceElement.textContent = unit === 'm2' ? `${pricePerSquareMeter} ₽` : `${pricePerPack} ₽`;
+
+            const totalTextElement = document.querySelector('.total-text-2');
+            totalTextElement.textContent = unit === 'm2' ? 'Цена ₽/ м²' : 'Цена ₽/ уп.';
         });
     });
 
@@ -102,21 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateTotalPrice();
     }
 
-    unitButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            unitButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            unit = this.dataset.unit;
-    
-            priceElement.textContent = unit === 'm2' ? `${pricePerSquareMeter} ₽/м²` : `${pricePerPack} ₽/уп`;
-    
-            const totalTextElement = document.querySelector('.total-text-2');
-            totalTextElement.textContent = unit === 'm2' ? 'Цена ₽/ м²' : 'Цена ₽/ уп.';
-    
-            calculateTotalPrice();
-        });
-    });
-
     document.querySelector('.quantity-minus.square').addEventListener('click', () => updateQuantity('square', 'minus'));
     document.querySelector('.quantity-plus.square').addEventListener('click', () => updateQuantity('square', 'plus'));
 
@@ -124,6 +101,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.quantity-plus.pack').addEventListener('click', () => updateQuantity('pack', 'plus'));
 
     calculateTotalPrice();
-
-    calculateTotalPrice(); 
 });

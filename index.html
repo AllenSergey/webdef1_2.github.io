@@ -4,71 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карточка товара</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 </head>
 <body>   
-    <div class="product-card">
+    <div class="product-card" data-square-per-pack="2.16" data-price-per-square-meter="1200" data-price-per-pack="2700" data-discount="0.04">
         <div class="slider-photo">
-        <div class="main-image-container">
-            <img class="main-image" src="./images/1.jpg" alt="Основное изображение">
-        </div>
-        <div class="slider-thumbnails-container">
-            <div class="arrow up">ˆ</div>
-            <div class="thumbnails">
-                <img class="thumbnail active" src="./images/1.jpg" alt="Миниатюра 1">
-                <img class="thumbnail" src="./images/2.jpg" alt="Миниатюра 2">
-                <img class="thumbnail" src="./images/3.jpeg" alt="Миниатюра 3">
+            <div class="main-image-container">
+                <img class="main-image" src="./images/1.jpg" alt="Основное изображение">
             </div>
-            <div class="arrow down">ˬ</div>
+            <div class="slider-thumbnails-container">
+                <div class="arrow up">
+                    <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M38 31.25L25.5 18.75L13 31.25" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                    
+                </div>
+                <div class="thumbnails">
+                    <img class="thumbnail active" src="./images/1.jpg" alt="Миниатюра 1">
+                    <img class="thumbnail" src="./images/2.jpg" alt="Миниатюра 2">
+                    <img class="thumbnail" src="./images/3.jpeg" alt="Миниатюра 3">
+                </div>
+                <div class="arrow down">
+                    <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 18.75L25.5 31.25L38 18.75" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
         </div>
-    </div>
         <div class="product-info">
             <div class="title">SPC ЛАМИНАТ ROYCE ENJOY ДУБ БЛЭКРОК E308</div>
             <div class="article">Артикул E308</div>
-            <div class="rating">★★★★☆</div>
+            <div class="rating">
+                <svg width="125" height="20" viewBox="0 0 125 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5 0L12.9787 7.63932H21L14.5106 12.3607L16.9894 20L10.5 15.2786L4.01064 20L6.48936 12.3607L0 7.63932H8.02129L10.5 0Z" fill="#FFCC00"/>
+                    <path d="M36.5 0L38.9787 7.63932H47L40.5106 12.3607L42.9894 20L36.5 15.2786L30.0106 20L32.4894 12.3607L26 7.63932H34.0213L36.5 0Z" fill="#FFCC00"/>
+                    <path d="M62.5 0L64.9787 7.63932H73L66.5106 12.3607L68.9894 20L62.5 15.2786L56.0106 20L58.4894 12.3607L52 7.63932H60.0213L62.5 0Z" fill="#FFCC00"/>
+                    <path d="M88.5 0L90.9787 7.63932H99L92.5106 12.3607L94.9894 20L88.5 15.2786L82.0106 20L84.4894 12.3607L78 7.63932H86.0213L88.5 0Z" fill="#FFCC00"/>
+                    <path d="M114.5 0L116.979 7.63932H125L118.511 12.3607L120.989 20L114.5 15.2786L108.011 20L110.489 12.3607L104 7.63932H112.021L114.5 0Z" fill="#FFCC00"/>
+                    </svg>
+                    
+            </div>
             <div class="description">
                 Вы хотите сделать свой интерьер более привлекательным и удобным для жизни? SPC квадратный Royce Enjoy Dub Blekrok E308 - это лучшее решение для создания красивых и практичных полов в вашем доме или офисе. Этот квадратный/половой ламинат сочетает в себе высокое качество и изысканный дизайн, который будет украшением любой комнаты.
             </div>
             <div class="total1">
-            <div class="total">
-                <div class="total-text-2">Цена ₽/ м²</div>
-            <div class="price-block">
-                <div class="price">1200 ₽/ м²</div>
-                <div class="old-price">1250 ₽ / м²</div>
-                <div class="unit-selector">
-                    <button class="unit-button active" data-unit="m2">м²</button>
-                    <button class="unit-button" data-unit="up">уп</button>
+                <div class="total">
+                    <div class="total-text-2">Цена ₽/ м²</div>
+                    <div class="price-block">
+                        <div class="price">1200 ₽</div>
+                        <div class="old-price1">1250 ₽ / м²</div>
+                        <div class="unit-selector">
+                            <button class="unit-button active" data-unit="m2">м²</button>
+                            <button class="unit-button" data-unit="up">уп</button>
+                        </div>
+                    </div>
+                    <div class="quantity-block">
+                        <button class="quantity-minus square">-</button>
+                        <input type="text" class="quantity-input square" value="2.16 м²" readonly>
+                        <button class="quantity-plus square">+</button>
+                        <span class="ravno">=</span>
+                        <button class="quantity-minus pack">-</button>
+                        <input type="text" class="quantity-input pack" value="1 уп" readonly>
+                        <button class="quantity-plus pack">+</button>
+                    </div>              
                 </div>
-            </div>
-            <div class="quantity-block">
-                <button class="quantity-minus square">-</button>
-                <input type="text" class="quantity-input square" value="2.16 м²" readonly>
-                <button class="quantity-plus square">+</button>
-                <span>=</span>
-                <button class="quantity-minus pack">-</button>
-                <input type="text" class="quantity-input pack" value="1 уп" readonly>
-                <button class="quantity-plus pack">+</button>
+                <div class="total-price-block">
+                    <div class="total-text">Общая стоимость</div>
+                    <div class="total-price"><span class="total">2592 ₽</span></div>
+                    <div class="discount-block">
+                        <span class="old-price">2700 ₽</span>
+                        <div class="discount-badge">-4%</div>
+                    </div>
+                </div>
             </div>              
-        </div>
-            <div class="total-price-block">
-                <div class="total-text">Общая стоимость</div>
-                <div class="total-price"><span class="total">2592 ₽</span></div>
-                <div class="discount-block">
-                    <span class="old-price">2700 ₽</span>
-                    <div class="discount-badge">-4%</div>
-                </div>
-            </div>
-                            
-        </div>              
             <div class="actions">
                 <button class="add-to-cart">Добавить в корзину</button>
                 <button class="buy-now">Купить в один клик</button>
             </div>
         </div>
-
     </div>
     <script src="script.js"></script>
 </body>
