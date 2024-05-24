@@ -398,7 +398,17 @@ body, html {
     .main-image {
         max-width: 350px;
         max-height: 459px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    .thumbnail {
+        max-width: 4.375rem;
+        max-height: 18.625rem;
+    }
+
+
 }
 
 
